@@ -1,0 +1,38 @@
+# Copy this file to terraform.tfvars and adjust to match your environment.
+project_name  = "lab"
+libvirt_uri   = "qemu:///system"
+
+#### VM CONFIGURATION ####
+vm_name       = "lab-vm"
+memory_mb     = 4096
+vcpu_count    = 4
+os_image_file = "../OS/ubuntu-22.04-server.qcow2" # Supports qcow2/raw/img as long as format matches below.
+os_image_format = "qcow2"
+root_disk_format = "qcow2"
+disk_size_gib = 32
+cpu_mode      = "host-passthrough"
+wait_for_lease = true
+
+#### NETWORK CONFIGURATION ####
+network_name     = "lab-net"
+network_mode     = "nat"
+network_domain   = "lab.internal"
+network_addresses = ["192.168.125.0/24"]
+network_autostart = true
+network_dhcp_enabled = true
+network_dhcp_range_start = "192.168.125.10"
+network_dhcp_range_end   = "192.168.125.200"
+# network_dns_forwarders = ["8.8.8.8", "1.1.1.1"]
+
+# To attach multiple NICs, list them here. Leaving this list empty defaults to a single
+# interface on `network_name` above.
+# vm_network_interfaces = [
+#   {
+#     network_name   = "lab-net"
+#     wait_for_lease = true
+#   },
+#   {
+#     network_name   = "default"
+#     wait_for_lease = false
+#   }
+# ]

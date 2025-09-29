@@ -1,0 +1,1 @@
+put your image os here, you can put: .img, .qcow2, .raw, etc.
